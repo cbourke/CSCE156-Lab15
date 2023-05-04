@@ -1,29 +1,53 @@
-package unl.cse;
+package unl.soc;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Stack;
 import java.util.List;
 
+/**
+ * A Binary Search Tree (BST) implementation. This implementation does not
+ * guarantee a <i>balanced</i> tree and so operations may not be fully
+ * O(log(n)).
+ *
+ * @param <T>
+ */
 public class BinarySearchTree<T> {
 
 	private TreeNode<T> root;
+
+	/**
+	 * The {@link Comparator} used for ordering elements in this tree.
+	 * 
+	 */
 	private final Comparator<T> comparator;
 
 	public BinarySearchTree(Comparator<T> comparator) {
 		this.comparator = comparator;
 	}
 
+	/**
+	 * Returns <code>true</code> if this tree contains the given element
+	 * <code>item</code>, <code>false</code> if it does not.
+	 * 
+	 * @param item
+	 * @return
+	 */
 	public boolean containsElement(T item) {
 		return (this.findElement(item) != null);
 	}
 
+	/**
+	 * Computes the depth of this tree (the maximal depth of any node in the tree)
+	 * using a "tree-walk" algorithm (no additional data structures).
+	 * 
+	 * @return
+	 */
 	public int getMaxDepth() {
 		if (root == null || (root.getLeftChild() == null && root.getRightChild() == null)) {
 			return 0;
 		}
 
-		// this method uses a "tree-walk" algorithm
 		TreeNode<T> curr = root;
 		TreeNode<T> prev = null;
 		int depth = 0;
@@ -67,6 +91,14 @@ public class BinarySearchTree<T> {
 		return maxDepth;
 	}
 
+	/**
+	 * Computes the depth of the given tree node in this tree. The depth of a node
+	 * <i>u</i> is the length of the unique path between the root and the node
+	 * <i>u</i>.
+	 * 
+	 * @param node
+	 * @return
+	 */
 	private int getDepth(TreeNode<T> node) {
 		int depth = 0;
 		TreeNode<T> curr = node;
@@ -77,13 +109,19 @@ public class BinarySearchTree<T> {
 		return depth;
 	}
 
+	/**
+	 * (Re)computes the number of nodes in this tree using a stack-based preorder
+	 * traversal strategy.
+	 * 
+	 * @return
+	 */
 	public int getNumNodes() {
 
 		int count = 0;
 
-		if (root == null)
+		if (root == null) {
 			return count;
-		// this method uses a stack-based preorder traversal
+		}
 		Stack<TreeNode<T>> s = new Stack<TreeNode<T>>();
 		TreeNode<T> curr = root;
 		while (curr != null) {
@@ -101,11 +139,24 @@ public class BinarySearchTree<T> {
 		return count;
 	}
 
+	/**
+	 * Adds the given element, <code>item</code> to this tree.
+	 * 
+	 * Throws an {@link IllegalArgumentException} if the given element is
+	 * <code>null</code>.
+	 * 
+	 * Throws an {@link IllegalStateException} if the given element is already in
+	 * the tree.
+	 * 
+	 * @param item
+	 */
 	public void addElement(T item) {
-		if (item == null)
+		if (item == null) {
 			throw new IllegalArgumentException("BinarySearchTree does not allow null elements");
-		if (containsElement(item))
+		}
+		if (containsElement(item)) {
 			throw new IllegalStateException("BinarySearchTree does not allow duplicate elements");
+		}
 		TreeNode<T> newNode = new TreeNode<T>(item);
 		if (root == null) {
 			root = newNode;
@@ -131,10 +182,88 @@ public class BinarySearchTree<T> {
 		}
 	}
 
+	/**
+	 * Returns the element in this tree that matches the given element
+	 * <code>item</code> according to <code>this</code> tree's {@link #comparator}.
+	 * 
+	 * @param item
+	 * @return
+	 */
+	public T findElement(T item) {
+
+		T result = null;
+
+		if (root == null) {
+			return result;
+		}
+
+		// TODO: implement this
+
+		return result;
+	}
+
+	/**
+	 * Computes the number of <i>leaf</i> nodes in this tree. A node is a leaf if it
+	 * has no children.
+	 * 
+	 * @return
+	 */
+	public int getNumLeaves() {
+		// TODO: implement this
+		return 0;
+	}
+
+	/**
+	 * Produces a {@link java.util.List} of elements in this tree in a preorder
+	 * ordering.
+	 * 
+	 * @return
+	 */
+	public List<T> preOrderTraverse() {
+		List<T> elements = new ArrayList<>();
+		// TODO: implement this
+
+		return elements;
+	}
+
+	/**
+	 * Produces a {@link java.util.List} of elements in this tree in an inorder
+	 * ordering.
+	 * 
+	 * @return
+	 */
+	public List<T> inOrderTraverse() {
+		List<T> elements = new ArrayList<>();
+		// TODO: implement this
+
+		return elements;
+	}
+
+	/**
+	 * Produces a {@link java.util.List} of elements in this tree in a postorder
+	 * ordering.
+	 * 
+	 * @return
+	 */
+	public List<T> postOrderTraverse() {
+		List<T> elements = new ArrayList<>();
+		// TODO: implement this
+
+		return elements;
+	}
+
+	/**
+	 * Returns a {@link String} representation of the topology (structure) of this
+	 * BST. Elements are "nested" and indented to show parent/child relations in a
+	 * vertical display.
+	 * 
+	 * @return
+	 */
 	@Override
 	public String toString() {
-		if (root == null)
+		if (root == null) {
 			return "[empty]";
+		}
 
 		StringBuilder sb = new StringBuilder();
 		Stack<TreeNode<T>> s = new Stack<TreeNode<T>>();
@@ -156,39 +285,42 @@ public class BinarySearchTree<T> {
 		return sb.toString();
 	}
 
-	public T findElement(T item) {
-		if (root == null)
-			return null;
-
-		T result = null;
-		// TODO: implement this
-		return result;
+	/**
+	 * Produces a LaTeX tikz diagram representation of this tree. To visualize this
+	 * diagram, you need to compile it in a LaTeX document/environment.
+	 * 
+	 * @return
+	 */
+	public String toTikz() {
+		if (root == null) {
+			return "";
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append(
+				"\\begin{tikzpicture}[transform shape,scale=1.0,level distance=1.25cm,level/.style={sibling distance=5cm/#1},every node/.style={circle,draw,minimum size=.75cm}]\n");
+		sb.append("\\node{" + this.root.getValue() + "}\n");
+		toTikz(this.root.getLeftChild(), sb);
+		toTikz(this.root.getRightChild(), sb);
+		sb.append(";\n");
+		sb.append("\\end{tikzpicture}\n");
+		return sb.toString();
 	}
 
-	public int getNumLeaves() {
-		// TODO: implement this
-		return 0;
-	}
-
-	public List<T> preOrderTraverse() {
-		List<T> elements = new ArrayList<>();
-		// TODO: implement this
-
-		return elements;
-	}
-
-	public List<T> inOrderTraverse() {
-		List<T> elements = new ArrayList<>();
-		// TODO: implement this
-
-		return elements;
-	}
-
-	public List<T> postOrderTraverse() {
-		List<T> elements = new ArrayList<>();
-		// TODO: implement this
-
-		return elements;
+	/**
+	 * Internal recursive method for the {{@link #toTikz()} method.
+	 * 
+	 * @param u
+	 * @param sb
+	 */
+	private void toTikz(TreeNode<T> u, StringBuilder sb) {
+		if (u == null) {
+			sb.append("child[draw opacity=0.0] {}\n");
+		} else {
+			sb.append("child {node {$" + u.getValue() + "$}\n");
+			toTikz(u.getLeftChild(), sb);
+			toTikz(u.getRightChild(), sb);
+			sb.append("}\n");
+		}
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +21,12 @@ public class HeapSort {
 
 		// TODO: implement this using a PriorityQueue
 		// Outline:
-		//   For each element x in list:
-		//     remove x from list
-		//     add x to heap
-		//   While heap is not empty:
-		//     remove the min element (poll)
-		//     add it to list
+		// For each element x in list:
+		// remove x from list
+		// add x to heap
+		// While heap is not empty:
+		// remove the min element (poll)
+		// add it to list
 
 		return;
 	}

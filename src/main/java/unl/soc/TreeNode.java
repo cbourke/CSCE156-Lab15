@@ -1,54 +1,54 @@
-package unl.cse;
+package unl.soc;
 
 public class TreeNode<T> {
 
-    private final T value;
-    private TreeNode<T> leftChild;
-    private TreeNode<T> rightChild;
-    private TreeNode<T> parent;
+	private final T value;
+	private TreeNode<T> leftChild;
+	private TreeNode<T> rightChild;
+	private TreeNode<T> parent;
 
-    public TreeNode(T value) {
-        this(value, null);
-    }
+	public TreeNode(T value) {
+		this(value, null);
+	}
 
-    public TreeNode(T value, TreeNode<T> parent) {
-        this.value = value;
-        this.parent = parent;
-        this.rightChild = null;
-        this.leftChild = null;
-    }
+	public TreeNode(T value, TreeNode<T> parent) {
+		this.value = value;
+		this.parent = parent;
+		this.rightChild = null;
+		this.leftChild = null;
+	}
 
-    public void setParent(TreeNode<T> parent) {
-        this.parent = parent;
-    }
+	public void setParent(TreeNode<T> parent) {
+		this.parent = parent;
+	}
 
-    public TreeNode<T> getParent() {
-        return this.parent;
-    }
+	public TreeNode<T> getParent() {
+		return this.parent;
+	}
 
-    public void setLeftChild(TreeNode<T> leftChild) {
-        this.leftChild = leftChild;
-    }
+	public void setLeftChild(TreeNode<T> leftChild) {
+		this.leftChild = leftChild;
+	}
 
-    public TreeNode<T> getLeftChild() {
-        return this.leftChild;
-    }
+	public TreeNode<T> getLeftChild() {
+		return this.leftChild;
+	}
 
-    public void setRightChild(TreeNode<T> rightChild) {
-        this.rightChild = rightChild;
-    }
+	public void setRightChild(TreeNode<T> rightChild) {
+		this.rightChild = rightChild;
+	}
 
-    public TreeNode<T> getRightChild() {
-        return this.rightChild;
-    }
+	public TreeNode<T> getRightChild() {
+		return this.rightChild;
+	}
 
-    public T getValue() {
-        return this.value;
-    }
-    
-    public String toString() {
-    	return "(" + this.value + ")";
-    }
+	public T getValue() {
+		return this.value;
+	}
+
+	public String toString() {
+		return "(" + this.value + ")";
+	}
 
 	@Override
 	public int hashCode() {
@@ -72,7 +72,7 @@ public class TreeNode<T> {
 			return false;
 
 		TreeNode other = (TreeNode) obj;
-		
+
 		if (leftChild == null) {
 			if (other.leftChild != null)
 				return false;
@@ -95,7 +95,5 @@ public class TreeNode<T> {
 			return false;
 		return true;
 	}
-    
-    
 
 }

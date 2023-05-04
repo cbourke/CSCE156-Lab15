@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
