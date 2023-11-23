@@ -1,11 +1,11 @@
 # Computer Science II
 ## Lab 15.0 - Binary Search Trees
+[School of Computing](https://computing.unl.edu)  
+[College of Engineering](https://engineering.unl.edu/)  
+[University of Nebraska-Lincoln](https://unl.edu)  
+[University of Nebraska-Omaha](https://unomaha.edu)  
 
 An introduction Binary Search Tree data structures.
-
-This is a lab used in Computer Science II (CSCE 156, CSCE 156H) in the 
-[Department of Computer Science & Engineering](https://cse.unl.edu) at the 
-[University of Nebraska-Lincoln](https://unl.edu).
 
 ## Overview
 
