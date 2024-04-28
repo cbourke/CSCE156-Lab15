@@ -150,7 +150,10 @@ ordering.
 1.  Implement the search algorithm described above (the 
     `findElement()` method)
 
-2.  Implement the three ordering methods as described above
+2.  Implement the inorder and post order methods.  The 
+    preorder method has been done for you as an example 
+    and a non-recursive, stack-based version has also
+    been provided.
 
 3.  Implement the `getNumLeaves()` method
 

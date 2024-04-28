@@ -45,6 +45,10 @@ public class TreeNode<T> {
 	public T getValue() {
 		return this.value;
 	}
+	
+	public boolean isLeaf() {
+		return (this.leftChild == null && this.rightChild == null);
+	}
 
 	public String toString() {
 		return "(" + this.value + ")";

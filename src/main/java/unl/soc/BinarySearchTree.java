@@ -2,6 +2,8 @@ package unl.soc;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 import java.util.List;
 
@@ -221,8 +223,45 @@ public class BinarySearchTree<T> {
 	 */
 	public List<T> preOrderTraverse() {
 		List<T> elements = new ArrayList<>();
-		// TODO: implement this
+		preOrderTraverse(this.root, elements);
+		return elements;
+	}
 
+	/**
+	 * Method used by {@link #preOrderTraverse()} to recursively add elements to the
+	 * given {@code elements} list.
+	 * 
+	 * @param u
+	 * @param elements
+	 */
+	private void preOrderTraverse(TreeNode<T> u, List<T> elements) {
+		if (u == null) {
+			return;
+		}
+		elements.add(u.getValue());
+		preOrderTraverse(u.getLeftChild(), elements);
+		preOrderTraverse(u.getRightChild(), elements);
+	}
+
+	/**
+	 * A stack-based preorder traversal. Returns a {@link java.util.List} of
+	 * elements in this tree in a preorder ordering.
+	 * 
+	 * @return
+	 */
+	public List<T> preOrderStackTraverse() {
+		List<T> elements = new ArrayList<>();
+		if (this.root == null) {
+			return elements;
+		}
+		Deque<TreeNode<T>> stack = new LinkedList<>();
+		stack.push(this.root);
+		while (!stack.isEmpty()) {
+			TreeNode<T> u = stack.pop();
+			elements.add(u.getValue());
+			stack.push(u.getRightChild());
+			stack.push(u.getLeftChild());
+		}
 		return elements;
 	}
 
@@ -343,27 +382,33 @@ public class BinarySearchTree<T> {
 		TreeNode<T> tCurr = other.root;
 		while (sCurr != null && tCurr != null) {
 
-			if (sCurr.getRightChild() != null)
+			if (sCurr.getRightChild() != null) {
 				s.push(sCurr.getRightChild());
-			if (tCurr.getRightChild() != null)
+			}
+			if (tCurr.getRightChild() != null) {
 				t.push(tCurr.getRightChild());
+			}
 
-			if (sCurr.getLeftChild() != null)
+			if (sCurr.getLeftChild() != null) {
 				s.push(sCurr.getLeftChild());
-			if (tCurr.getLeftChild() != null)
+			}
+			if (tCurr.getLeftChild() != null) {
 				t.push(tCurr.getLeftChild());
+			}
 
 			if (!sCurr.equals(tCurr)) {
 				return false;
 			}
-			if (s.isEmpty())
+			if (s.isEmpty()) {
 				sCurr = null;
-			else
+			} else {
 				sCurr = s.pop();
-			if (t.isEmpty())
+			}
+			if (t.isEmpty()) {
 				tCurr = null;
-			else
+			} else {
 				tCurr = t.pop();
+			}
 		}
 
 		if (sCurr != null || tCurr != null) {
